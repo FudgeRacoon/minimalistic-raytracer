@@ -1,0 +1,8 @@
+[
+{
+  "directory": "D:/projects/my-projects/minimalistic-raytracer/Build",
+  "command": "D:\\dev\\Mingw64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\main.dir\\main.cpp.obj -c D:\\projects\\my-projects\\minimalistic-raytracer\\main.cpp",
+  "file": "D:/projects/my-projects/minimalistic-raytracer/main.cpp",
+  "output": "CMakeFiles/main.dir/main.cpp.obj"
+}
+]

@@ -1,0 +1,3 @@
+D:/projects/my-projects/minimalistic-raytracer/Build/CMakeFiles/main.dir
+D:/projects/my-projects/minimalistic-raytracer/Build/CMakeFiles/edit_cache.dir
+D:/projects/my-projects/minimalistic-raytracer/Build/CMakeFiles/rebuild_cache.dir
