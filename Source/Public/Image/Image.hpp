@@ -19,15 +19,15 @@ struct ImageHandler
 		WriteFileCallback write_file;
 		ReadMemoryStreamCallback read_memory_stream;
 		WriteMemoryStreamFileCallback write_memory_stream;
-	} image_ops;
+	} ops;
 
-	char* extensions;
+	char* ext;
 };
 
-struct ImageHandlerList
+struct ImageHandlerNode
 {
-	ImageHandler* value;
-	ImageHandlerList* next;
+	ImageHandler* data;
+	ImageHandlerNode* next;
 };
 
 struct Image
@@ -47,7 +47,7 @@ struct Image
 	uint8_t pixel_size;
 	uint32_t width, height;
 
-	static ImageHandlerList s_handlers;
+	static ImageHandlerNode* s_handler_list;
 };
 
 #ifdef __cplusplus
@@ -63,6 +63,7 @@ errno_t image_get_handler_by_format(ImageHandler* handler, const char* ext);
 
 errno_t image_find_handler_by_filename(ImageHandler* handler, const char* filename);
 
+
 errno_t image_new(Image* image);
 errno_t image_free(Image* image);
 
@@ -74,22 +75,17 @@ errno_t image_save_stream(Image* image, MemoryStream* stream);
 
 errno_t image_get_pixel_size(Image* image, size_t* size);
 
-errno_t image_set_pixel(Image* image, int x, int y, errno_t* pixel);
-errno_t image_get_pixel(Image* image, int x, int y, errno_t* pixel);
+errno_t image_set_pixel(Image* image, uint32_t x, uint32_t y, errno_t* pixel);
+errno_t image_get_pixel(Image* image, uint32_t x, uint32_t y, errno_t* pixel);
 
-errno_t image_set_pixel1i(Image* image, int x, int y, int pixel);
-errno_t image_set_pixel1f(Image* image, int x, int y, float pixel);
-errno_t image_set_pixel3i(Image* image, int x, int y, int r, int g, int b);
-errno_t image_set_pixel3f(Image* image, int x, int y, float r, float g, float b);
-errno_t image_set_pixel4i(Image* image, int x, int y, int r, int g, int b, int a);
-errno_t image_set_pixel4f(Image* image, int x, int y, float r, float g, float b, float a);
+errno_t image_set_pixel1i(Image* image, uint32_t x, uint32_t y, int pixel);
+errno_t image_get_pixel1i(Image* image, uint32_t x, uint32_t y, int* pixel);
 
-errno_t image_get_pixel1i(Image* image, int x, int y, int *pix);
-errno_t image_get_pixel1f(Image* image, int x, int y, float *pix);
-errno_t image_get_pixel3i(Image* image, int x, int y, int *r, int *g, int *b);
-errno_t image_get_pixel3f(Image* image, int x, int y, float *r, float *g, float *b);
-errno_t image_get_pixel4i(Image* image, int x, int y, int *r, int *g, int *b, int *a);
-errno_t image_get_pixel4f(Image* image, int x, int y, float *r, float *g, float *b, float *a);
+errno_t image_set_pixel3i(Image* image, uint32_t x, uint32_t y, int r, int g, int b);
+errno_t image_get_pixel3i(Image* image, uint32_t x, uint32_t y, int* r, int* g, int* b);
+
+errno_t image_set_pixel4i(Image* image, uint32_t x, uint32_t y, int r, int g, int b, int a);
+errno_t image_get_pixel4i(Image* image, uint32_t x, uint32_t y, int* r, int* g, int* b, int* a);
 
 #ifdef __cplusplus
 }
