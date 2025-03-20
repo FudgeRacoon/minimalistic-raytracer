@@ -1,8 +1,10 @@
-#include "Image.hpp"
+#include "Image/Image.hpp"
 
 #include <assert.h>
 #include <stdlib.h>
 #include <string.h>
+
+ImageHandlerNode* Image::s_handler_list = nullptr;
 
 errno_t image_register_handler(ImageHandler* handler)
 {
@@ -57,12 +59,12 @@ errno_t image_get_handler_by_index(ImageHandler* handler, size_t index)
 
 	return 0;
 }
-errno_t image_get_handler_by_format(ImageHandler* handler, const char* ext)
+errno_t image_get_handler_by_format(ImageHandler* handler, const char* exts)
 {
 	assert(handler);
 
 	auto node = Image::s_handler_list;
-	for (; node || strcmp(node->data->ext, ext) == 0; node = node->next);
+	for (; node || strcmp(node->data->exts, exts) == 0; node = node->next);
 
 	handler = node->data;
 
@@ -72,6 +74,42 @@ errno_t image_get_handler_by_format(ImageHandler* handler, const char* ext)
 errno_t image_find_handler_by_filename(ImageHandler* handler, const char* filename)
 {
 	assert(handler);
+
+	if (!Image::s_handler_list)
+		return -1;
+
+	const char* suffix_result = strrchr(filename, '.');
+	if (!suffix_result)
+		return -1;
+
+	const size_t suffix_result_len = strlen(suffix_result);
+
+	auto node = Image::s_handler_list;
+	for (; node; node = node->next)
+	{
+		char* start_ptr;
+		char* end_ptr;
+
+		const char* exts = node->data->exts;
+		while(exts)
+		{
+			start_ptr = strstr(exts, suffix_result + 1);
+			if (!start_ptr)
+				break;
+
+			end_ptr = start_ptr + suffix_result_len;
+
+			if (*end_ptr == ':' || *end_ptr == '\0')
+			{
+				handler = node->data;
+				return 0;
+			}
+
+			exts = end_ptr;
+		}
+	}
+
+	return 0;
 }
 
 
@@ -119,14 +157,9 @@ errno_t image_load_file(Image* image)
 	if (!image_find_handler_by_filename(&handler, image->filename))
 		return -1;
 
-	FILE* fp = fopen(image->filename, "rb");
-	if (!fp)
+	if (!handler.ops.read_file(image))
 		return -1;
 
-	if (!handler.ops.read_file(image, fp))
-		return -1;
-
-	fclose(fp);
 	return 0;
 }
 errno_t image_save_file(Image* image)
@@ -141,14 +174,9 @@ errno_t image_save_file(Image* image)
 	if (!image_find_handler_by_filename(&handler, image->filename))
 		return -1;
 
-	FILE* fp = fopen(image->filename, "wb");
-	if (!fp)
+	if (!handler.ops.write_file(image))
 		return -1;
 
-	if (!handler.ops.write_file(image, fp))
-		return -1;
-
-	fclose(fp);
 	return 0;
 }
 

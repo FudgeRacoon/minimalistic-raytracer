@@ -1,14 +1,13 @@
 #ifndef IMAGE_HPP
 #define IMAGE_HPP
 
-#include <stdio.h>
 #include <stdint.h>
 
 struct Image;
 struct MemoryStream;
 
-using ReadFileCallback = errno_t(*)(Image*, FILE*);
-using WriteFileCallback = errno_t(*)(Image*, FILE*);
+using ReadFileCallback = errno_t(*)(Image*);
+using WriteFileCallback = errno_t(*)(Image*);
 using ReadMemoryStreamCallback = errno_t(*)(Image*, MemoryStream*);
 using WriteMemoryStreamFileCallback = errno_t(*)(Image*, MemoryStream*);
 
@@ -21,7 +20,7 @@ struct ImageHandler
 		WriteMemoryStreamFileCallback write_memory_stream;
 	} ops;
 
-	char* ext;
+	const char* exts;
 };
 
 struct ImageHandlerNode
@@ -59,7 +58,7 @@ errno_t image_register_handler(ImageHandler* handler);
 errno_t image_get_handler_count(size_t* count);
 
 errno_t image_get_handler_by_index(ImageHandler* handler, size_t index);
-errno_t image_get_handler_by_format(ImageHandler* handler, const char* ext);
+errno_t image_get_handler_by_format(ImageHandler* handler, const char* exts);
 
 errno_t image_find_handler_by_filename(ImageHandler* handler, const char* filename);
 
@@ -75,8 +74,8 @@ errno_t image_save_stream(Image* image, MemoryStream* stream);
 
 errno_t image_get_pixel_size(Image* image, size_t* size);
 
-errno_t image_set_pixel(Image* image, uint32_t x, uint32_t y, errno_t* pixel);
-errno_t image_get_pixel(Image* image, uint32_t x, uint32_t y, errno_t* pixel);
+errno_t image_set_pixel(Image* image, uint32_t x, uint32_t y, void* pixel);
+errno_t image_get_pixel(Image* image, uint32_t x, uint32_t y, void* pixel);
 
 errno_t image_set_pixel1i(Image* image, uint32_t x, uint32_t y, int pixel);
 errno_t image_get_pixel1i(Image* image, uint32_t x, uint32_t y, int* pixel);
