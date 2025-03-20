@@ -7,6 +7,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(minimalistic-raytracer LANGUAGES C CXX)
 
-add_executable(main main.cpp PPMHandler.cpp)
+set(SRC_FILES
+	main.cpp
+	Source/Private/Image/Image.cpp
+	Source/Private/Image/PPMHandler.cpp
+)
 
-target_include_directories(main PRIVATE ${CMAKE_SOURCE_DIR}/Source/Public)
+add_executable(App ${SRC_FILES})
+
+target_include_directories(App PRIVATE ${CMAKE_SOURCE_DIR}/Source/Public)
