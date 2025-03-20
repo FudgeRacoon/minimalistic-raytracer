@@ -47,19 +47,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = D:\dev\CMake\bin\cmake.exe
+CMAKE_COMMAND = "C:\My Programs\Development\CMake\bin\cmake.exe"
 
 # The command to remove a file.
-RM = D:\dev\CMake\bin\cmake.exe -E rm -f
+RM = "C:\My Programs\Development\CMake\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\projects\my-projects\minimalistic-raytracer
+CMAKE_SOURCE_DIR = D:\dev\my-projects\minimalistic-raytracer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\projects\my-projects\minimalistic-raytracer\Build
+CMAKE_BINARY_DIR = D:\dev\my-projects\minimalistic-raytracer\Build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = D:\projects\my-projects\minimalistic-raytracer\Build
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
-	D:\dev\CMake\bin\cmake-gui.exe -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\My Programs\Development\CMake\bin\cmake-gui.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -77,7 +77,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	D:\dev\CMake\bin\cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\My Programs\Development\CMake\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\projects\my-projects\minimalistic-raytracer\Build\CMakeFiles D:\projects\my-projects\minimalistic-raytracer\Build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\dev\my-projects\minimalistic-raytracer\Build\CMakeFiles D:\dev\my-projects\minimalistic-raytracer\Build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\projects\my-projects\minimalistic-raytracer\Build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\dev\my-projects\minimalistic-raytracer\Build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -116,24 +116,72 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named App
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 main
-.PHONY : main
+App: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 App
+.PHONY : App
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
+App/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\App.dir\build.make CMakeFiles/App.dir/build
+.PHONY : App/fast
+
+Source/Private/Image/Image.obj: Source/Private/Image/Image.cpp.obj
+.PHONY : Source/Private/Image/Image.obj
+
+# target to build an object file
+Source/Private/Image/Image.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\App.dir\build.make CMakeFiles/App.dir/Source/Private/Image/Image.cpp.obj
+.PHONY : Source/Private/Image/Image.cpp.obj
+
+Source/Private/Image/Image.i: Source/Private/Image/Image.cpp.i
+.PHONY : Source/Private/Image/Image.i
+
+# target to preprocess a source file
+Source/Private/Image/Image.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\App.dir\build.make CMakeFiles/App.dir/Source/Private/Image/Image.cpp.i
+.PHONY : Source/Private/Image/Image.cpp.i
+
+Source/Private/Image/Image.s: Source/Private/Image/Image.cpp.s
+.PHONY : Source/Private/Image/Image.s
+
+# target to generate assembly for a file
+Source/Private/Image/Image.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\App.dir\build.make CMakeFiles/App.dir/Source/Private/Image/Image.cpp.s
+.PHONY : Source/Private/Image/Image.cpp.s
+
+Source/Private/Image/PPMHandler.obj: Source/Private/Image/PPMHandler.cpp.obj
+.PHONY : Source/Private/Image/PPMHandler.obj
+
+# target to build an object file
+Source/Private/Image/PPMHandler.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\App.dir\build.make CMakeFiles/App.dir/Source/Private/Image/PPMHandler.cpp.obj
+.PHONY : Source/Private/Image/PPMHandler.cpp.obj
+
+Source/Private/Image/PPMHandler.i: Source/Private/Image/PPMHandler.cpp.i
+.PHONY : Source/Private/Image/PPMHandler.i
+
+# target to preprocess a source file
+Source/Private/Image/PPMHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\App.dir\build.make CMakeFiles/App.dir/Source/Private/Image/PPMHandler.cpp.i
+.PHONY : Source/Private/Image/PPMHandler.cpp.i
+
+Source/Private/Image/PPMHandler.s: Source/Private/Image/PPMHandler.cpp.s
+.PHONY : Source/Private/Image/PPMHandler.s
+
+# target to generate assembly for a file
+Source/Private/Image/PPMHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\App.dir\build.make CMakeFiles/App.dir/Source/Private/Image/PPMHandler.cpp.s
+.PHONY : Source/Private/Image/PPMHandler.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\App.dir\build.make CMakeFiles/App.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -141,7 +189,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\App.dir\build.make CMakeFiles/App.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -149,7 +197,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\App.dir\build.make CMakeFiles/App.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -160,7 +208,13 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... main
+	@echo ... App
+	@echo ... Source/Private/Image/Image.obj
+	@echo ... Source/Private/Image/Image.i
+	@echo ... Source/Private/Image/Image.s
+	@echo ... Source/Private/Image/PPMHandler.obj
+	@echo ... Source/Private/Image/PPMHandler.i
+	@echo ... Source/Private/Image/PPMHandler.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

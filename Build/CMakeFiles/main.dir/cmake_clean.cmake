@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/main.dir/Source/Private/Image/Image.cpp.obj"
+  "CMakeFiles/main.dir/Source/Private/Image/Image.cpp.obj.d"
+  "CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.obj"
+  "CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.obj.d"
   "CMakeFiles/main.dir/main.cpp.obj"
   "CMakeFiles/main.dir/main.cpp.obj.d"
   "libmain.dll.a"

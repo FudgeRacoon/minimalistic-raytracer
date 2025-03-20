@@ -8,7 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "D:/projects/my-projects/minimalistic-raytracer/main.cpp" "CMakeFiles/main.dir/main.cpp.obj" "gcc" "CMakeFiles/main.dir/main.cpp.obj.d"
+  "D:/dev/my-projects/minimalistic-raytracer/Source/Private/Image/Image.cpp" "CMakeFiles/main.dir/Source/Private/Image/Image.cpp.obj" "gcc" "CMakeFiles/main.dir/Source/Private/Image/Image.cpp.obj.d"
+  "D:/dev/my-projects/minimalistic-raytracer/Source/Private/Image/PPMHandler.cpp" "CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.obj" "gcc" "CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.obj.d"
+  "D:/dev/my-projects/minimalistic-raytracer/main.cpp" "CMakeFiles/main.dir/main.cpp.obj" "gcc" "CMakeFiles/main.dir/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

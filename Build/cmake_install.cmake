@@ -1,4 +1,4 @@
-# Install script for directory: D:/projects/my-projects/minimalistic-raytracer
+# Install script for directory: D:/dev/my-projects/minimalistic-raytracer
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,13 +34,13 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "D:/dev/Mingw64/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "C:/My Programs/Development/MinGW/bin/objdump.exe")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "D:/projects/my-projects/minimalistic-raytracer/Build/install_local_manifest.txt"
+  file(WRITE "D:/dev/my-projects/minimalistic-raytracer/Build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -56,6 +56,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "D:/projects/my-projects/minimalistic-raytracer/Build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "D:/dev/my-projects/minimalistic-raytracer/Build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

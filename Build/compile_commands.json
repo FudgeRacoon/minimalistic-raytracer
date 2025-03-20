@@ -1,8 +1,20 @@
 [
 {
-  "directory": "D:/projects/my-projects/minimalistic-raytracer/Build",
-  "command": "D:\\dev\\Mingw64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\main.dir\\main.cpp.obj -c D:\\projects\\my-projects\\minimalistic-raytracer\\main.cpp",
-  "file": "D:/projects/my-projects/minimalistic-raytracer/main.cpp",
-  "output": "CMakeFiles/main.dir/main.cpp.obj"
+  "directory": "D:/dev/my-projects/minimalistic-raytracer/Build",
+  "command": "C:\\MYPROG~1\\DEVELO~1\\MinGW\\bin\\G__~1.EXE  @CMakeFiles/App.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\App.dir\\main.cpp.obj -c D:\\dev\\my-projects\\minimalistic-raytracer\\main.cpp",
+  "file": "D:/dev/my-projects/minimalistic-raytracer/main.cpp",
+  "output": "CMakeFiles/App.dir/main.cpp.obj"
+},
+{
+  "directory": "D:/dev/my-projects/minimalistic-raytracer/Build",
+  "command": "C:\\MYPROG~1\\DEVELO~1\\MinGW\\bin\\G__~1.EXE  @CMakeFiles/App.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\App.dir\\Source\\Private\\Image\\Image.cpp.obj -c D:\\dev\\my-projects\\minimalistic-raytracer\\Source\\Private\\Image\\Image.cpp",
+  "file": "D:/dev/my-projects/minimalistic-raytracer/Source/Private/Image/Image.cpp",
+  "output": "CMakeFiles/App.dir/Source/Private/Image/Image.cpp.obj"
+},
+{
+  "directory": "D:/dev/my-projects/minimalistic-raytracer/Build",
+  "command": "C:\\MYPROG~1\\DEVELO~1\\MinGW\\bin\\G__~1.EXE  @CMakeFiles/App.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\App.dir\\Source\\Private\\Image\\PPMHandler.cpp.obj -c D:\\dev\\my-projects\\minimalistic-raytracer\\Source\\Private\\Image\\PPMHandler.cpp",
+  "file": "D:/dev/my-projects/minimalistic-raytracer/Source/Private/Image/PPMHandler.cpp",
+  "output": "CMakeFiles/App.dir/Source/Private/Image/PPMHandler.cpp.obj"
 }
 ]

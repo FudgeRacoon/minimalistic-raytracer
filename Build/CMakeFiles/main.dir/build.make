@@ -43,19 +43,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = D:\dev\CMake\bin\cmake.exe
+CMAKE_COMMAND = "C:\My Programs\Development\CMake\bin\cmake.exe"
 
 # The command to remove a file.
-RM = D:\dev\CMake\bin\cmake.exe -E rm -f
+RM = "C:\My Programs\Development\CMake\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\projects\my-projects\minimalistic-raytracer
+CMAKE_SOURCE_DIR = D:\dev\my-projects\minimalistic-raytracer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\projects\my-projects\minimalistic-raytracer\Build
+CMAKE_BINARY_DIR = D:\dev\my-projects\minimalistic-raytracer\Build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/main.dir/depend.make
@@ -72,32 +72,67 @@ CMakeFiles/main.dir/codegen:
 .PHONY : CMakeFiles/main.dir/codegen
 
 CMakeFiles/main.dir/main.cpp.obj: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main.cpp.obj: D:/projects/my-projects/minimalistic-raytracer/main.cpp
+CMakeFiles/main.dir/main.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
+CMakeFiles/main.dir/main.cpp.obj: D:/dev/my-projects/minimalistic-raytracer/main.cpp
 CMakeFiles/main.dir/main.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\projects\my-projects\minimalistic-raytracer\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/main.cpp.obj"
-	D:\dev\Mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main.cpp.obj -MF CMakeFiles\main.dir\main.cpp.obj.d -o CMakeFiles\main.dir\main.cpp.obj -c D:\projects\my-projects\minimalistic-raytracer\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\dev\my-projects\minimalistic-raytracer\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/main.cpp.obj"
+	C:\MYPROG~1\DEVELO~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main.cpp.obj -MF CMakeFiles\main.dir\main.cpp.obj.d -o CMakeFiles\main.dir\main.cpp.obj -c D:\dev\my-projects\minimalistic-raytracer\main.cpp
 
 CMakeFiles/main.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main.cpp.i"
-	D:\dev\Mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\projects\my-projects\minimalistic-raytracer\main.cpp > CMakeFiles\main.dir\main.cpp.i
+	C:\MYPROG~1\DEVELO~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\dev\my-projects\minimalistic-raytracer\main.cpp > CMakeFiles\main.dir\main.cpp.i
 
 CMakeFiles/main.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
-	D:\dev\Mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\projects\my-projects\minimalistic-raytracer\main.cpp -o CMakeFiles\main.dir\main.cpp.s
+	C:\MYPROG~1\DEVELO~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\dev\my-projects\minimalistic-raytracer\main.cpp -o CMakeFiles\main.dir\main.cpp.s
+
+CMakeFiles/main.dir/Source/Private/Image/Image.cpp.obj: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/Source/Private/Image/Image.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
+CMakeFiles/main.dir/Source/Private/Image/Image.cpp.obj: D:/dev/my-projects/minimalistic-raytracer/Source/Private/Image/Image.cpp
+CMakeFiles/main.dir/Source/Private/Image/Image.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\dev\my-projects\minimalistic-raytracer\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/Source/Private/Image/Image.cpp.obj"
+	C:\MYPROG~1\DEVELO~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/Source/Private/Image/Image.cpp.obj -MF CMakeFiles\main.dir\Source\Private\Image\Image.cpp.obj.d -o CMakeFiles\main.dir\Source\Private\Image\Image.cpp.obj -c D:\dev\my-projects\minimalistic-raytracer\Source\Private\Image\Image.cpp
+
+CMakeFiles/main.dir/Source/Private/Image/Image.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/Source/Private/Image/Image.cpp.i"
+	C:\MYPROG~1\DEVELO~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\dev\my-projects\minimalistic-raytracer\Source\Private\Image\Image.cpp > CMakeFiles\main.dir\Source\Private\Image\Image.cpp.i
+
+CMakeFiles/main.dir/Source/Private/Image/Image.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/Source/Private/Image/Image.cpp.s"
+	C:\MYPROG~1\DEVELO~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\dev\my-projects\minimalistic-raytracer\Source\Private\Image\Image.cpp -o CMakeFiles\main.dir\Source\Private\Image\Image.cpp.s
+
+CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.obj: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.obj: CMakeFiles/main.dir/includes_CXX.rsp
+CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.obj: D:/dev/my-projects/minimalistic-raytracer/Source/Private/Image/PPMHandler.cpp
+CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.obj: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\dev\my-projects\minimalistic-raytracer\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.obj"
+	C:\MYPROG~1\DEVELO~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.obj -MF CMakeFiles\main.dir\Source\Private\Image\PPMHandler.cpp.obj.d -o CMakeFiles\main.dir\Source\Private\Image\PPMHandler.cpp.obj -c D:\dev\my-projects\minimalistic-raytracer\Source\Private\Image\PPMHandler.cpp
+
+CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.i"
+	C:\MYPROG~1\DEVELO~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\dev\my-projects\minimalistic-raytracer\Source\Private\Image\PPMHandler.cpp > CMakeFiles\main.dir\Source\Private\Image\PPMHandler.cpp.i
+
+CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.s"
+	C:\MYPROG~1\DEVELO~1\MinGW\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\dev\my-projects\minimalistic-raytracer\Source\Private\Image\PPMHandler.cpp -o CMakeFiles\main.dir\Source\Private\Image\PPMHandler.cpp.s
 
 # Object files for target main
 main_OBJECTS = \
-"CMakeFiles/main.dir/main.cpp.obj"
+"CMakeFiles/main.dir/main.cpp.obj" \
+"CMakeFiles/main.dir/Source/Private/Image/Image.cpp.obj" \
+"CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.obj"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 main.exe: CMakeFiles/main.dir/main.cpp.obj
+main.exe: CMakeFiles/main.dir/Source/Private/Image/Image.cpp.obj
+main.exe: CMakeFiles/main.dir/Source/Private/Image/PPMHandler.cpp.obj
 main.exe: CMakeFiles/main.dir/build.make
 main.exe: CMakeFiles/main.dir/linkLibs.rsp
 main.exe: CMakeFiles/main.dir/objects1.rsp
 main.exe: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\projects\my-projects\minimalistic-raytracer\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\dev\my-projects\minimalistic-raytracer\Build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable main.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\main.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -109,6 +144,6 @@ CMakeFiles/main.dir/clean:
 .PHONY : CMakeFiles/main.dir/clean
 
 CMakeFiles/main.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\projects\my-projects\minimalistic-raytracer D:\projects\my-projects\minimalistic-raytracer D:\projects\my-projects\minimalistic-raytracer\Build D:\projects\my-projects\minimalistic-raytracer\Build D:\projects\my-projects\minimalistic-raytracer\Build\CMakeFiles\main.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\dev\my-projects\minimalistic-raytracer D:\dev\my-projects\minimalistic-raytracer D:\dev\my-projects\minimalistic-raytracer\Build D:\dev\my-projects\minimalistic-raytracer\Build D:\dev\my-projects\minimalistic-raytracer\Build\CMakeFiles\main.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/main.dir/depend
 
