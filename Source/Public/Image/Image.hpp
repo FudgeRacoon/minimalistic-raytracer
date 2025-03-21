@@ -8,6 +8,7 @@ struct MemoryStream;
 
 using ReadFileCallback = errno_t(*)(Image*);
 using WriteFileCallback = errno_t(*)(Image*);
+
 using ReadMemoryStreamCallback = errno_t(*)(Image*, MemoryStream*);
 using WriteMemoryStreamFileCallback = errno_t(*)(Image*, MemoryStream*);
 
@@ -16,6 +17,7 @@ struct ImageHandler
 	struct {
 		ReadFileCallback read_file;
 		WriteFileCallback write_file;
+
 		ReadMemoryStreamCallback read_memory_stream;
 		WriteMemoryStreamFileCallback write_memory_stream;
 	} ops;
@@ -35,6 +37,7 @@ struct Image
 		FMT_GREY8,
 		FMT_RGB24,
 		FMT_RGBA32,
+		FMT_RGBF48,
 
 		FMT_NULL
 	} pixel_fmt;
@@ -73,6 +76,8 @@ errno_t image_load_stream(Image* image, MemoryStream* stream);
 errno_t image_save_stream(Image* image, MemoryStream* stream);
 
 errno_t image_get_pixel_size(Image* image, size_t* size);
+
+errno_t image_set_pixel_buffer(Image* image, uint32_t width, uint32_t height, void* buffer);
 
 errno_t image_set_pixel(Image* image, uint32_t x, uint32_t y, void* pixel);
 errno_t image_get_pixel(Image* image, uint32_t x, uint32_t y, void* pixel);

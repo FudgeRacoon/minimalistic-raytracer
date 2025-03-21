@@ -231,6 +231,34 @@ errno_t image_get_pixel_size(Image* image, size_t* size)
 	return 0;
 }
 
+errno_t image_set_pixel_buffer(Image* image, uint32_t width, uint32_t height, void* buffer)
+{
+	assert(image);
+
+	if (width < 1 || width < 1) return -1;
+
+	size_t pixel_size;
+	if (!image_get_pixel_size(image, &pixel_size))
+		return -1;
+
+	size_t buffer_size = width * height * pixel_size;
+	void* pixel_buffer = malloc(buffer_size);
+
+	if (buffer)
+		memcpy(pixel_buffer, buffer, buffer_size);
+	else
+		memset(pixel_buffer, 0, buffer_size);
+
+	free(image->pixels);
+
+	image->pixels = pixel_buffer;
+	image->width = width;
+	image->height = width;
+	image->pixel_fmt = fmt;
+
+	return 0;
+}
+
 errno_t image_set_pixel(Image* image, uint32_t x, uint32_t y, void* pixel)
 {
 	assert(image);
