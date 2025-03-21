@@ -40,9 +40,9 @@ struct Image
 		FMT_RGBF48,
 
 		FMT_NULL
-	} pixel_fmt;
+	} format;
 
-	void* pixels;
+	void* buffer;
 
 	char* filename;
 
@@ -77,8 +77,6 @@ errno_t image_save_stream(Image* image, MemoryStream* stream);
 
 errno_t image_get_pixel_size(Image* image, size_t* size);
 
-errno_t image_set_pixel_buffer(Image* image, uint32_t width, uint32_t height, void* buffer);
-
 errno_t image_set_pixel(Image* image, uint32_t x, uint32_t y, void* pixel);
 errno_t image_get_pixel(Image* image, uint32_t x, uint32_t y, void* pixel);
 
@@ -90,6 +88,8 @@ errno_t image_get_pixel3i(Image* image, uint32_t x, uint32_t y, int* r, int* g, 
 
 errno_t image_set_pixel4i(Image* image, uint32_t x, uint32_t y, int r, int g, int b, int a);
 errno_t image_get_pixel4i(Image* image, uint32_t x, uint32_t y, int* r, int* g, int* b, int* a);
+
+errno_t image_set_pixel_buffer(Image* image, uint32_t width, uint32_t height, Image::Format format, void* buffer);
 
 #ifdef __cplusplus
 }

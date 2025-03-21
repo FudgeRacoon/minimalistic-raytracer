@@ -119,9 +119,9 @@ errno_t image_new(Image* image)
 	if (!image)
 		return -1;
 
-	image->pixel_fmt = Image::FMT_RGBA32;
+	image->format = Image::FMT_RGBA32;
 
-	image->pixels = nullptr;
+	image->buffer = nullptr;
 	image->filename = nullptr;
 
 	size_t size;
@@ -137,7 +137,7 @@ errno_t image_free(Image* image)
 {
 	assert(image);
 
-	free(image->pixels);
+	free(image->buffer);
 	free(image->filename);
 
 	free(image);
@@ -219,42 +219,14 @@ errno_t image_get_pixel_size(Image* image, size_t* size)
 {
 	assert(image);
 
-	switch(image->pixel_fmt)
+	switch(image->format)
 	{
 		case Image::FMT_GREY8:  *size = 1;
 		case Image::FMT_RGB24:  *size = 3;
 		case Image::FMT_RGBA32: *size = 4;
 
-		default: break;
+		default: return -1;
 	}
-
-	return 0;
-}
-
-errno_t image_set_pixel_buffer(Image* image, uint32_t width, uint32_t height, void* buffer)
-{
-	assert(image);
-
-	if (width < 1 || width < 1) return -1;
-
-	size_t pixel_size;
-	if (!image_get_pixel_size(image, &pixel_size))
-		return -1;
-
-	size_t buffer_size = width * height * pixel_size;
-	void* pixel_buffer = malloc(buffer_size);
-
-	if (buffer)
-		memcpy(pixel_buffer, buffer, buffer_size);
-	else
-		memset(pixel_buffer, 0, buffer_size);
-
-	free(image->pixels);
-
-	image->pixels = pixel_buffer;
-	image->width = width;
-	image->height = width;
-	image->pixel_fmt = fmt;
 
 	return 0;
 }
@@ -266,7 +238,7 @@ errno_t image_set_pixel(Image* image, uint32_t x, uint32_t y, void* pixel)
 	if (x >= image->width || y >= image->height)
 		return -1;
 
-	uint8_t* dst = (uint8_t*)image->pixels + ((x + y * image->width) * image->pixel_size);
+	uint8_t* dst = (uint8_t*)image->buffer + ((x + y * image->width) * image->pixel_size);
 	memcpy(dst, pixel, image->pixel_size);
 
 	return 0;
@@ -278,7 +250,7 @@ errno_t image_get_pixel(Image* image, uint32_t x, uint32_t y, void* pixel)
 	if (x >= image->width || y >= image->height)
 		return -1;
 
-	uint8_t* src = (uint8_t*)image->pixels + ((x + y * image->width) * image->pixel_size);
+	uint8_t* src = (uint8_t*)image->buffer + ((x + y * image->width) * image->pixel_size);
 	memcpy(pixel, src, image->pixel_size);
 
 	return 0;
@@ -338,6 +310,34 @@ errno_t image_get_pixel4i(Image* image, uint32_t x, uint32_t y, int *r, int *g, 
 	*g = pixels[1];
 	*b = pixels[2];
 	*a = pixels[4];
+
+	return 0;
+}
+
+errno_t image_set_pixel_buffer(Image* image, uint32_t width, uint32_t height, Image::Format format, void* buffer)
+{
+	assert(image);
+
+	if (width < 1 || height < 1) return -1;
+
+	size_t pixel_size;
+	if (!image_get_pixel_size(image, &pixel_size))
+		return -1;
+
+	size_t buffer_size = width * height * pixel_size;
+	void* pixel_buffer = malloc(buffer_size);
+
+	if (buffer)
+		memcpy(pixel_buffer, buffer, buffer_size);
+	else
+		memset(pixel_buffer, 0, buffer_size);
+
+	free(image->buffer);
+
+	image->buffer = pixel_buffer;
+	image->width = width;
+	image->height = width;
+	image->format = format;
 
 	return 0;
 }

@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static errno_t _read_file_line(FILE* fp, uint8_t* buffer, size_t size)
+static errno_t _file_read_line(FILE* fp, uint8_t* buffer, size_t size)
 {
 	char c;
 	uint8_t* buffer_ptr = buffer;
@@ -31,13 +31,7 @@ static errno_t _read_file(Image* image)
 	uint8_t header_buffer[256];
 	uint32_t width, height, max_pixel_value, current_hdr_line = 1;
 
-	if (!_read_file_line(fp, header_buffer, sizeof(header_buffer)))
-		return -1;
-
-	if (!(header_buffer[0] == 'P' && (header_buffer[1] == '3' || header_buffer[1] == '6')))
-		return -1;
-
-	while (current_hdr_line < 3 && _read_file_line(fp, header_buffer, sizeof(header_buffer)))
+	while (current_hdr_line <= 3 && _file_read_line(fp, header_buffer, sizeof(header_buffer)))
 	{
 		if (header_buffer[0] == '#')
 			continue;
@@ -45,10 +39,14 @@ static errno_t _read_file(Image* image)
 		switch (current_hdr_line)
 		{
 		case 1:
-			if (!sscanf((char*)header_buffer, "%d %d\n", &width, &height))
+			if (!(header_buffer[0] == 'P' && header_buffer[1] == '3'))
 				return -1;
 			break;
 		case 2:
+			if (!sscanf((char*)header_buffer, "%d %d\n", &width, &height))
+				return -1;
+			break;
+		case 3:
 			if (!sscanf((char*)header_buffer, "%d\n", &max_pixel_value))
 				return -1;
 			break;
@@ -67,11 +65,16 @@ static errno_t _read_file(Image* image)
 	else if (max_pixel_value == 65535) bytes = 6;
 	else return -1;
 
-	if (bytes == 3) image->pixel_fmt = Image::FMT_RGB24;
-	else if (bytes == 6) image->pixel_fmt = Image::FMT_RGBF48;
+	if (bytes == 3) image->format = Image::FMT_RGB24;
+	else if (bytes == 6) image->format = Image::FMT_RGBF48;
 	else return -1;
 
-	size_t framebuffer_size = width * height * bytes;
+	size_t buffer_size = width * height * bytes;
+
+	image_set_pixel_buffer(image, width, height, image->format, nullptr);
+
+	if (fread(image->buffer, sizeof(uint8_t), buffer_size, fp) < buffer_size)
+		return -1;
 
 	fclose(fp);
 	return 0;
@@ -82,6 +85,9 @@ static errno_t _write_file(Image* image)
 	if (!fp)
 		return -1;
 
+	uint8_t header_buffer[256];
+	uint32_t width, height, max_pixel_value;
+	const char* header_format = "P%d\n#minimalistic-raytracer\n%d %d\n%d\n";
 
 	fclose(fp);
 	return 0;
